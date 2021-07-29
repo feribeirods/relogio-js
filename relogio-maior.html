@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Relógio Analógico</title>
+
+    <style>
+
+        .corpo {
+            width: 550px;
+            height: 550px;
+            border: 5px solid black;
+            border-radius: 50%;
+            margin: 100px auto;
+            background-image: url(relogio-bg.png);
+            background-size: contain;
+            display: flex;            
+            justify-content: center;
+        }
+
+        .segundos {
+            border: 5px solid black;
+            background-color: red;
+            height: 220px;
+            width: 5px;
+            margin-top: 50px;
+            position: absolute;
+            border-radius: 10px;
+
+            transform-origin: bottom center;
+        }
+
+        .minutos {            
+            background-color: black;
+            height: 195px;
+            width: 10px;
+            margin-top: 84px;
+            position: absolute;
+            border-radius: 10px;
+
+            transform-origin: bottom center;
+        }
+
+        .horas {
+            background-color: black;
+            height: 135px;
+            width: 10px;
+            margin-top: 142px;
+            border-radius: 10px;
+
+            transform-origin: bottom center;
+        }
+
+        .centro {
+            width: 25px;
+            height: 25px;
+            background-color: black;
+            border-radius: 50%;            
+            position: absolute;
+            top: 370px;
+            z-index: 8;
+        }
+        
+    </style>
+
+</head>
+
+<body>
+
+    <div class="corpo">
+
+        <div class="centro"></div>
+
+        <div class="segundos"></div>
+
+        <div class="minutos"></div>
+
+        <div class="horas"></div>
+
+    </div>
+
+
+
+    <script>
+
+        
+
+        const segundos = document.querySelector(".segundos")
+        const minutos = document.querySelector(".minutos")
+        const horas = document.querySelector(".horas")
+
+        function giraPonteiro() {
+
+            var date = new Date();
+
+            var s = date.getSeconds() * 6,
+                m = date.getMinutes() * 6 + (s / 60),
+                h = date.getHours()  * 30 + (m / 12);
+
+            segundos.style.transform = `rotate(${s}deg)`
+
+             minutos.style.transform = `rotate(${m}deg)`
+
+            horas.style.transform = `rotate(${h}deg)`
+        }
+
+        setInterval(giraPonteiro, 1000)
+
+
+
+    </script>
+
+
+
+    
+</body>
+
+
+</html>
